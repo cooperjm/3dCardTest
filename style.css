@@ -47,7 +47,8 @@ body {
   inset: 0;
   padding: 5em 3em;
   transform-style: inherit;
-  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
   display: grid;
   align-content: center;
 }
@@ -58,6 +59,7 @@ body {
   background-size: cover;
   background-blend-mode: overlay;
   color: #333;
+  transform:rotateY(0deg);
 }
 
 .card__front::before {
