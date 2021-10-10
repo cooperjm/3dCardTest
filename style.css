@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
+
+:root {
+  --level-one : translateZ(3rem);
+  --level-two : translateZ(6rem);
+  --level-three : translateZ(9rem);
+
+  --fw-normal: 400;
+  --fw-bold: 700;
+
+  --clr: #b7c9e5;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: Oswald;
+}
+
+.card {
+  width: 400px;
+  perspective: 1500px;
+}
+
+.card__content {
+  text-align: center;
+  position: relative;
+  padding: 15em 3em;
+  transition: transform 2s ease;
+  transform-style: preserve-3d;
+}
+
+.card:hover .card__content {
+  transform: rotateY(.5turn);
+  will-change: transform;
+}
+
+.card__front,
+.card__back {
+  position: absolute;
+  inset: 0;
+  padding: 5em 3em;
+  transform-style: inherit;
+  backface-visibility: hidden;
+  display: grid;
+  align-content: center;
+}
+
+.card__front {
+  background-color: var(--clr);
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/308367/fair.jpg);
+  background-size: cover;
+  background-blend-mode: overlay;
+  color: #333;
+}
+
+.card__front::before {
+  content: '';
+  position: absolute;
+  --spacer: 1.5em;
+  top: var(--spacer);
+  bottom: var(--spacer);
+  left: var(--spacer);
+  right: var(--spacer);
+  border: 3px solid currentColor;
+  transform: var(--level-one);
+  will-change: transform;
+}
+
+.card__title {
+  font-size: 3.5rem;
+  transform: var(--level-three);
+  will-change: transform;
+  order: 2;
+  text-transform: uppercase;
+  /* text-shadow: 0 0 5px black; */
+}
+
+.card__subtitle {
+  transform: var(--level-two);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: .75rem;
+  font-weight: var(--fw-bold);
+  opacity: .7;;
+}
+
+.card__body {
+  transform: var(--level-two);
+  font-weight: var(--fw-normal);
+  font-size: 1.5rem;
+  line-height: 1.6;
+}
+
+.card__back {
+  transform: rotateY(.5turn);
+  color: var(--clr);
+  background: #333;
+}
